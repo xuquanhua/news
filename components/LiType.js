@@ -1,0 +1,1 @@
+/** * Created by xuqh on 2016/8/15. *//** * Created by xuqh on 2016/8/15. */import React from 'react';import { Link } from 'react-router'class LiType extends React.Component{	constructor(props){		super(props);		this.changeCur = this.changeCur.bind(this);	}	changeCur(){		console.log('haha')	}	render(){		return(			<li>asdf</li>		)	}}module.exports = LiType;

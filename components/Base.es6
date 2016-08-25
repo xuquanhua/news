@@ -1,0 +1,1 @@
+/** * Created by xuqh on 2016/7/18 */class Base {	constructor(name) {		this.name = name;	}	getValueByUrl(href, key) {		var _href = href + '',			regexp = eval("/(\\?|\\&)" + key + "=([^\\&]+)/i"),			value = _href.match(regexp);		return (value && value[2]) ? value[2] : ''	}}export {Base}

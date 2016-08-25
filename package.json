@@ -1,0 +1,38 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "news",
+  "main": "index.js",
+  "scripts": {
+    "test": "hello world",
+    "start": "webpack-dev-server --inline --content-base ."
+  },
+  "dependencies": {
+    "react-router": "^2.6.1",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
+    "signals": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.23.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  },
+  "author": "xuqh",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/npm/npm.git"
+  }
+}

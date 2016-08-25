@@ -1,0 +1,1 @@
+/** * Created by xuqh on 2016/7/18. */import React from 'react';import ReactDOM from 'react-dom';import {ListBox, mySignal} from '../components/ListBox.js';ReactDOM.render(	<div>		<ListBox></ListBox>	</div>,	document.getElementById('app'));

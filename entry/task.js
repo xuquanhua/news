@@ -1,0 +1,1 @@
+/** * Created by xuqh on 2016/8/17. */import React from 'react';import ReactDOM from 'react-dom';import App from '../containers/App.js';ReactDOM.render(	<div>		<App></App>	</div>,	document.getElementById('app'));

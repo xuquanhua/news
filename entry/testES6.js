@@ -1,0 +1,1 @@
+/** * Created by xuqh on 2016/8/15. */import {Base} from '../components/Base';var base = new Base()var ha = base.getValueByUrl('hahaha?ha=123&kjli', 'ha')console.log(ha)

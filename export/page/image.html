@@ -1,0 +1,97 @@
+<html>
+<head>
+    <script>
+        // 获取本地上传的照片路径
+        function getPath(obj) {
+            if (obj) {
+                //ie
+                if (window.navigator.userAgent.indexOf("MSIE") >= 1) {
+                    obj.select();
+                    // IE下取得图片的本地路径
+                    return document.selection.createRange().text;
+                }
+                //firefox
+                else if (window.navigator.userAgent.indexOf("Firefox") >= 1) {
+                    if (obj.files) {
+                        // Firefox下取得的是图片的数据
+                        return obj.files.item(0).getAsDataURL();
+                    }
+                    return obj.value;
+                }
+                return obj.value;
+            }
+        }
+        //预览照片
+        function previewPhoto(){
+            var picsrc=getPath(document.all.photo_select);
+            var picpreview=document.getElementById("preview");
+            if(!picsrc){
+                return
+            }
+            if(window.navigator.userAgent.indexOf("MSIE") >= 1) {
+                if(picpreview) {
+                    try{
+                        picpreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = picsrc;
+                    }catch(ex){
+                        alert("文件路径非法，请重新选择！") ;
+                        return false;
+                    }
+                }else{
+                    picpreview.innerHTML="<img src='"+picsrc+"' />";
+                }
+            }
+        }
+        //校验图片大小
+        function checkPhoto(){
+            var photo = getPath(document.all.photo_select);
+            if(!photo){
+                alert("请选择一个本地图片文件！");
+                return;
+            }
+            var imgObj = new Image();
+            imgObj.src = photo;
+            var width = imgObj.width;
+            var height = imgObj.height;
+            ///获取正确的图片尺寸大小，兼容ie6、7、8
+            try{
+                if((typeof width=="undefined" || width==0) && (typeof height=="undefined" || height==0)){
+                    var picpreview=document.getElementById("preview");
+                    if(picpreview && picpreview.filters && picpreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src) {
+                        var tempDiv=document.createElement("div");
+                        picpreview.appendChild(tempDiv);
+                        tempDiv.style.width="10px";
+                        tempDiv.style.height="10px";
+                        tempDiv.style.diplay="none";
+                        tempDiv.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);";
+                        tempDiv.ID="previewTemp";
+                        var url=picpreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src;
+                        tempDiv.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src=url;
+                        width=tempDiv.offsetWidth;
+                        height=tempDiv.offsetHeight;
+                        picpreview.removeChild(tempDiv);
+                    }
+                }
+            }
+            catch(e){
+            }
+            if(photo.toLowerCase().indexOf("http://") > - 1){
+                alert("必须提供本机硬盘上的图片上传！");
+                return false;
+            }
+            alert("照片宽："+width+"像素 \n照片高："+height+"像素");
+
+        }
+    </script>
+</head>
+
+<body>
+
+<div id="preview" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale); width:160px;height:180px;border:solid 1px black;">
+</div>
+
+<input id="photo_select" type="file" onchange="previewPhoto()" />
+
+<input type="button" value="校验照片大小" onclick="checkPhoto()" />
+
+</body>
+</html>
