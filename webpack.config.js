@@ -5,7 +5,7 @@ var path = require("path");
 var webpack = require("webpack");
 module.exports = {
     entry: {
-		//news:"./entry/News",
+		news:"./entry/News",
 		// test:["./entry/test", "./entry/test2"],
 		//demo_none_jsx:"./entry/demo-none-jsx",
 		// testComponent: "./entry/testComponent",
@@ -13,7 +13,7 @@ module.exports = {
 		// task:"./entry/task",
 		// taskRedux:"./entry/taskRedux",
 		//taskReduxRouter:"./entry/taskReduxRouter",
-		newsReduxRouter:"./entry/newsReduxRouter"
+		//newsReduxRouter:"./entry/newsReduxRouter"
 		// route:"./entry/route"
 		//testReduxThunk:"./entry/testReduxThunk"
     },
